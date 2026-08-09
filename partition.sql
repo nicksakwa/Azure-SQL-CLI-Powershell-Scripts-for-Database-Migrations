@@ -18,4 +18,4 @@ CREATE PARTITION SCHEME PartitionByMonthSch
 -- Creates a partitioned table called Order that applies PartitionByMonthSch partition scheme to partition the OrderDate column  
 CREATE TABLE Order ([Id] int PRIMARY KEY, OrderDate datetime2)  
     ON PartitionByMonthSch (OrderDate) ;  
-GO
+GO  

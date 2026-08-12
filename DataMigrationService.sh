@@ -29,3 +29,26 @@ az datamigration sql-db create \
         encrypt-connection=true trust-server-certificate=true \
     --scope "/subscriptions/<YourSubscription>/resourceGroups/<YourResourceGroup>/providers/Microsoft.Sql/servers/<YourTargetServer>" \
     --migration-service "/subscriptions/<YourSubscription>/resourceGroups/<YourResourceGroup>/providers/Microsoft.DataMigration/sqlMigrationServices/<YourMigrationService>"
+
+
+# Create a database migration for specific tables
+az datamigration sql-db create \
+    --resource-group "<YourResourceGroup>" \
+     --sqldb-instance-name "<YourTargetServer>" \
+     --target-db-name "<YourTargetDB>" \
+     --source-database-name "<YourSourceDB>" \
+     --source-sql-connection authentication="SqlAuthentication" \
+        data-source="<YourSourceServer>" \
+        user-name="<YourSourceUser>" \
+        password="<YourSourcePassword>" \
+        encrypt-connection=true \
+        trust-server-certificate=true \
+    --target-sql-connection authentication="SqlAuthentication" \
+        data-source="<YourTargetServer>.database.windows.net" \
+        user-name="<YourTargetUser>" \
+        password="<YourTargetPassword>" \
+        encrypt-connection=true \
+        trust-server-certificate=true \
+    --table-list "[Person].[Person]" "[Person].[EmailAddress]" "[Sales].[Customer]" \
+    --scope "/subscriptions/<YourSubscription>/resourceGroups/<YourResourceGroup>/providers/Microsoft.Sql/servers/<YourTargetServer>" \
+    --migration-service "/subscriptions/<YourSubscription>/resourceGroups/<YourResourceGroup>/providers/Microsoft.DataMigration/sqlMigrationServices/<YourMigrationService>"

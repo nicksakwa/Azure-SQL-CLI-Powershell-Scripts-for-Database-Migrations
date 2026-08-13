@@ -1,0 +1,13 @@
+# Set up secure credentials for source and target connections
+$sourcePass = ConvertTo-SecureString "<YourSourcePassword>" -AsPlainText -Force
+$targetPass = ConvertTo-SecureString "<YourTargetPassword>" -AsPlainText -Force
+
+# Start the database migration to Azure SQL Database
+New-AzDataMigrationToSqlDb -ResourceGroupName "<YourResourceGroup>" `              # Name of your Azure resource group
+    -SqlDbInstanceName "<YourTargetServer>" `               # Name of the target Azure SQL Database server
+    -Kind "SqlDb" -TargetDbName "<YourTargetDB>" `                        # Name of the target database
+    -SourceDatabaseName "<YourSourceDB>" `                  # Name of the source database
+    -SourceSqlConnectionAuthentication SQLAuthentication -SourceSqlConnectionDataSource "<YourSourceServer>" `   # Source SQL Server hostname or IP
+    -SourceSqlConnectionUserName "<YourSourceUser>" `       # Source SQL Server username
+    -SourceSqlConnectionPassword $sourcePass -Scope "/subscriptions/<YourSubscription>/resourceGroups/<YourResourceGroup>/providers/Microsoft.Sql/servers/<YourTargetServer>" -TargetSqlConnectionAuthentication SQLAuthentication -TargetSqlConnectionDataSource "<YourTargetServer>.database.windows.net" -TargetSqlConnectionUserName "<YourTargetUser>" `       # Target database username
+    -TargetSqlConnectionPassword $targetPass -MigrationService "/subscriptions/<YourSubscription>/resourceGroups/<YourResourceGroup>/providers/Microsoft.DataMigration/SqlMigrationServices/<YourMigrationService>"

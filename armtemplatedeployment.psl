@@ -8,9 +8,9 @@ $resourceGroupName = "${projectName}rg"
 #Create Resource Group and Deploy Template to Resource Group
 New-AzResourceGroup -Name $resourceGroupName -Location $location
 
-New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName 
-    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.sql/sql-logical-server/azuredeploy.json" 
-    -administratorLogin $adminUser 
+New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName `
+    -TemplateUri "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.sql/sql-logical-server/azuredeploy.json" `
+    -administratorLogin $adminUser `
     -administratorLoginPassword $adminPassword
 
 Read-Host -Prompt "Press [ENTER] to continue ..."

@@ -60,3 +60,10 @@ az datamigration sql-db show \
     --sqldb-instance-name "<YourTargetServer>" \
     --target-db-name "<YourTargetDB>" \
     --expand "MigrationStatusDetails" # Include detailed migration status
+
+# Wait for the migration to complete before continuing
+az datamigration sql-db wait \
+    --resource-group "<YourResourceGroup>" \
+    --sqldb-instance-name "<YourTargetServer>" \
+    --target-db-name "<YourTargetDB>" \
+    --created   # Wait until migration is created/completed

@@ -2,7 +2,8 @@
 az extension add --name datamigration 
 
 # Create the Azure DMS service
-az datamigration sql-service create --resource-group "<YourResourceGroup>" \
+az datamigration sql-service create \
+    --resource-group "<YourResourceGroup>" \
     --sql-migration-service-name "<YourMigrationService>" \
     --location "<YourLocation>"
 
@@ -34,10 +35,10 @@ az datamigration sql-db create \
 # Create a database migration for specific tables
 az datamigration sql-db create \
     --resource-group "<YourResourceGroup>" \
-     --sqldb-instance-name "<YourTargetServer>" \
-     --target-db-name "<YourTargetDB>" \
-     --source-database-name "<YourSourceDB>" \
-     --source-sql-connection authentication="SqlAuthentication" \
+    --sqldb-instance-name "<YourTargetServer>" \
+    --target-db-name "<YourTargetDB>" \
+    --source-database-name "<YourSourceDB>" \
+    --source-sql-connection authentication="SqlAuthentication" \
         data-source="<YourSourceServer>" \
         user-name="<YourSourceUser>" \
         password="<YourSourcePassword>" \

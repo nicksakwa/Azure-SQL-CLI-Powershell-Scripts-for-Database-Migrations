@@ -52,3 +52,10 @@ az datamigration sql-db create \
     --table-list "[Person].[Person]" "[Person].[EmailAddress]" "[Sales].[Customer]" \
     --scope "/subscriptions/<YourSubscription>/resourceGroups/<YourResourceGroup>/providers/Microsoft.Sql/servers/<YourTargetServer>" \
     --migration-service "/subscriptions/<YourSubscription>/resourceGroups/<YourResourceGroup>/providers/Microsoft.DataMigration/sqlMigrationServices/<YourMigrationService>"
+
+# Check the status of the database migration
+az datamigration sql-db show \
+    --resource-group "<YourResourceGroup>" \
+    --sqldb-instance-name "<YourTargetServer>" \
+    --target-db-name "<YourTargetDB>" \
+    --expand "MigrationStatusDetails" # Include detailed migration status

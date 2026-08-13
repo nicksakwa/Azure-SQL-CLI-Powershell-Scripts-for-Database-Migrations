@@ -67,3 +67,10 @@ az datamigration sql-db wait \
     --sqldb-instance-name "<YourTargetServer>" \
     --target-db-name "<YourTargetDB>" \
     --created   # Wait until migration is created/completed
+
+# Cancel in-progress migration
+az datamigration sql-db cancel \
+    --resource-group "<YourResourceGroup>" \
+    --sqldb-instance-name "<YourTargetServer>" \
+    --target-db-name "<YourTargetDB>" \
+    --migration-operation-id "<YourMigrationOperationId>"  # ID from the migration operation

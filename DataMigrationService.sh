@@ -74,3 +74,4 @@ az datamigration sql-db cancel \
     --sqldb-instance-name "<YourTargetServer>" \
     --target-db-name "<YourTargetDB>" \
     --migration-operation-id "<YourMigrationOperationId>"  # ID from the migration operation
+

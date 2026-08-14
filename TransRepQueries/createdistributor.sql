@@ -28,3 +28,10 @@ exec sp_adddistpublisher
     @thirdparty_flag = 0,
     @publisher_type = N'MSSQLSERVER'
 GO
+
+-- register subscriber
+exec sp_addsubscriber
+    @subscriber = N'constoso.database.windows.net',
+    @type= 0,
+    @description = N'azure sql database(target)',
+GO

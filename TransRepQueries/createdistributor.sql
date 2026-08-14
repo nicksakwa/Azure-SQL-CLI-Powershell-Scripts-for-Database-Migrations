@@ -17,3 +17,14 @@ EXEC sp_adddistributiondb
     @deletebatch_size_cmd = 2000,
     @security_mode = 1
 GO
+
+-- Add distribution publisher
+exec sp_adddistpublisher
+    @publisher = N'constoso-srv',
+    @distribution_db = N'distribution',
+    @security_mode = 1,
+    @working_directory = N'C:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\ReplData',
+    @trusted = N'false',
+    @thirdparty_flag = 0,
+    @publisher_type = N'MSSQLSERVER'
+GO

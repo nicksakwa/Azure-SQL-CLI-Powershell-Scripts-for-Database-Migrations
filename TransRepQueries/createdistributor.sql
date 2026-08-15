@@ -35,3 +35,11 @@ exec sp_addsubscriber
     @type= 0,
     @description = N'azure sql database(target)',
 GO
+
+-- Enable DB replication
+use master
+exec sp_replicationdboption
+    @dbname = N'adventureworks',
+    @optname = N'publish',
+    @value = N' true'
+GO

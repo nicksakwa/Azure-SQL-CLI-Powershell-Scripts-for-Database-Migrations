@@ -29,3 +29,20 @@ EXEC sp_addpublication
     @enabled_for_p2p = N'false',
     @enabled_for_het_sub = N'false'
 GO
+
+exec sp_addpublication_snapshot
+    @publication = N'AdventureWorks_TransactionalPublication', 
+    @frequency_type = 1, 
+    @frequency_interval = 0, 
+    @frequency_relative_interval = 0, 
+    @frequency_recurrence_factor = 0, 
+    @frequency_subday = 0, 
+    @frequency_subday_interval = 0, 
+    @active_start_time_of_day = 0, 
+    @active_end_time_of_day = 235959, 
+    @active_start_date = 0,
+    @active_end_date = 0,
+    @publisher_security_mode = 0,
+    @publisher_login = N'sqladmin',
+    @publisher_password = N'password'
+GO

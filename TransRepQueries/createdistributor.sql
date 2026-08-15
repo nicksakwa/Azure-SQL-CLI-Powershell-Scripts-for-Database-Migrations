@@ -43,3 +43,8 @@ exec sp_replicationdboption
     @optname = N'publish',
     @value = N' true'
 GO
+
+-- Exec log reader agent
+exec [AdventureWorks].sys.sp_addlogreader_agent
+    @publisher_security_mode = 1
+GO

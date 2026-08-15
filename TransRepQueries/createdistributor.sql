@@ -48,3 +48,8 @@ GO
 exec [AdventureWorks].sys.sp_addlogreader_agent
     @publisher_security_mode = 1
 GO
+
+-- Add queue reader agent
+exec [AdventureWorks].sys.sp_adddistribution_agent
+    @frompublisher = 1
+GO

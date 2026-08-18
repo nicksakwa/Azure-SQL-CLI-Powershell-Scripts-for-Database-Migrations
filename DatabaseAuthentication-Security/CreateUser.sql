@@ -17,3 +17,16 @@ CREATE ROLE [SalesReader];
 ALTER ROLE [SalesReader] ADD MEMBER [DP300User1];
 ALTER ROLE [SalesReader] ADD MEMBER [DP300User2];
 GRANT SELECT ON SCHEMA::Sales TO [SalesReader];
+
+-- create OR alter procedures
+CREATE OR ALTER PROCEDURE Sales.DemoProc
+AS 
+SELECT P.Name,
+    SUM(SOD.LineTotal) AS TotalSales,
+    SOH.OrderDate
+FROM Production.Products P
+    INNER JOIN Sales.SalesOrderDetails SOD ON (SOD.ProductID = P.ProductID)
+    INNER JOIN Sales.SalesOrders SOH ON (SOH.SalesOrderID= SOD.SalesOrderID)
+GROUP BY P.Name,
+    SOH.OrderDate
+ORDER BY TotalSales DESC;

@@ -31,9 +31,9 @@ GROUP BY P.Name,
     SOH.OrderDate
 ORDER BY TotalSales DESC;
 GO
-
 EXEC AS USER = 'DP300User1';
 
+-- Normal query for security check
 SELECT P.Name,
     SUM(SOD.LineTotal) AS TotalSales,
     SOH.OrderDate
@@ -43,4 +43,8 @@ FROM Production.Products P
 GROUP BY P.Name,
     SOH.OrderDate
 ORDER BY TotalSales DESC;
-    
+
+-- Execution priviledge for DP300User1
+EXECUTE AS USER = 'DP300User1';
+EXEC Sales.DemoProc;
+

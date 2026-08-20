@@ -3,3 +3,7 @@ BACKUP DATABASE YourDatabase TO URL='https://yourstorageaccount.blob.core.window
 
 -- Restoring DB to Managed Instance from Azure Blob Storage
 RESTORE DATABASE YourDatabase FROM URL='https://yourstorageaccount.blob.core.windows.net/yourcontainer/YourDatabase.bak' 
+
+-- Dynamic SQL execution example
+SELECT 'BACKUP DATABASE' +  name + TO DISK= 'C:\Backup\' + name + '.bak'
+FROM sys.databases

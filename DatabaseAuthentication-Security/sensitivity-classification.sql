@@ -1,0 +1,4 @@
+ADD SENSITIVITY CLASSIFICATION TO
+    [Application].[People].[EmailAddress]
+WITH (LABEL='PII', INFORMATION_TYPE='Email')
+GO

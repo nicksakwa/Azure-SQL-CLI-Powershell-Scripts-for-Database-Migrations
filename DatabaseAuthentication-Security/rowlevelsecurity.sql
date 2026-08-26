@@ -1,3 +1,5 @@
+-- Creating Sales table with data for tenant users
+
 CREATE TABLE [SALES](SalesID INT,
     ProductID INT,
     TenantName NVARCHAR(10)
@@ -15,3 +17,18 @@ INSERT INTO [Sales] VALUES (6, 4, 'Tenant1', 2, 57.00);
 INSERT INTO [Sales] VALUES (7, 4, 'Tenant1', 2, 57.00);
 
 SELECT * FROM Sales;
+
+-- creating tenant users
+CREATE USER [TenantAdmin] WITH PASSWORD ='' GO
+
+CREATE USER [Tenant1] WITH PASSWORD ='' GO
+CREATE USER [Tenant2] WITH PASSWORD ='' GO
+CREATE USER [Tenant3] WITH PASSWORD ='' GO
+CREATE USER [Tenant4] WITH PASSWORD ='' GO
+
+GRANT SELECT [Sales] TO [TenantAdmin] GO
+
+GRANT SELECT [Sales] TO [Tenant1] GO
+GRANT SELECT [Sales] TO [Tenant2] GO
+GRANT SELECT [Sales] TO [Tenant3] GO
+GRANT SELECT [Sales] TO [Tenant4] GO

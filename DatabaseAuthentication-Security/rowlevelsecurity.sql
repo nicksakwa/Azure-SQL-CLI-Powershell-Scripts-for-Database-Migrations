@@ -32,3 +32,14 @@ GRANT SELECT [Sales] TO [Tenant1] GO
 GRANT SELECT [Sales] TO [Tenant2] GO
 GRANT SELECT [Sales] TO [Tenant3] GO
 GRANT SELECT [Sales] TO [Tenant4] GO
+
+-- Create Schema
+CREATE SCHEMA sec; GO
+
+-- Create the filter functions
+CREATE FUNCTION sec.tvf_SecurityPredicatebyTenant(@TenantName AS NVARCHAR(10))
+    RETURNS TABLE
+WITH SCHEMABINDING
+AS 
+    RETURN SELECT 1 AS result
+        WHERE @TenantName = USER_NAME() OR USER_NAME() = 'TenantAdmin'; GO

@@ -43,3 +43,10 @@ WITH SCHEMABINDING
 AS 
     RETURN SELECT 1 AS result
         WHERE @TenantName = USER_NAME() OR USER_NAME() = 'TenantAdmin'; GO
+
+-- Create selection permissions to Tenant users
+GRANT SELECT ON sec.tvf_SecurityPredicatebyTenant TO [TenantAdmin] GO
+GRANT SELECT ON sec.tvf_SecurityPredicatebyTenant TO [Tenant1] GO
+GRANT SELECT ON sec.tvf_SecurityPredicatebyTenant TO [Tenant2] GO
+GRANT SELECT ON sec.tvf_SecurityPredicatebyTenant TO [Tenant3] GO
+GRANT SELECT ON sec.tvf_SecurityPredicatebyTenant TO [Tenant4] GO

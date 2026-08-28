@@ -50,3 +50,8 @@ GRANT SELECT ON sec.tvf_SecurityPredicatebyTenant TO [Tenant1] GO
 GRANT SELECT ON sec.tvf_SecurityPredicatebyTenant TO [Tenant2] GO
 GRANT SELECT ON sec.tvf_SecurityPredicatebyTenant TO [Tenant3] GO
 GRANT SELECT ON sec.tvf_SecurityPredicatebyTenant TO [Tenant4] GO
+
+-- Create security policy
+CREATE SECURITY POLICY sec.SalesPolicy
+ADD FILTER PREDICATE sec.tvf_SecurityPredicatebyTenant(TenantName) ON [dbo].[Sales];
+WITH (STATE = ON); GO

@@ -55,3 +55,23 @@ GRANT SELECT ON sec.tvf_SecurityPredicatebyTenant TO [Tenant4] GO
 CREATE SECURITY POLICY sec.SalesPolicy
 ADD FILTER PREDICATE sec.tvf_SecurityPredicatebyTenant(TenantName) ON [dbo].[Sales];
 WITH (STATE = ON); GO
+
+EXECUTE AS USER = 'TenantAdmin';
+SELECT * FROM dbo.Sales;
+REVERT;
+
+EXECUTE AS USER = 'Tenant1';
+SELECT * FROM dbo.Sales;
+REVERT;
+
+EXECUTE AS USER = 'Tenant2';
+SELECT * FROM dbo.Sales;
+REVERT;
+
+EXECUTE AS USER = 'Tenant3';
+SELECT * FROM dbo.Sales;
+REVERT;
+
+EXECUTE AS USER = 'Tenant4';
+SELECT * FROM dbo.Sales;
+REVERT;

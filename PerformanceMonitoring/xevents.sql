@@ -14,8 +14,16 @@ ORDER BY
     pkg.name,
     obj.name;
 
--- Create events session but 1st check if one exists
+-- Create events session but 1st check if one exists and then drops it 
 IF EXISTS (SELECT * FROM sys.server_event_sessions WHERE name='test_session')
     DROP EVENT SESSION test_session ON SERVER;
 GO
 
+-- create events session after check
+CREATE EVENT SESSION test_session
+ON SERVER
+    ADD EVENT sqlos.async_io_requested,
+    ADD EVENT sqlserver.lock_acquired
+    ADD TARGET package0.etw_classic_sync_target (SET default_etw_session_logfile_path= N'C:\demo\traces\sqletw.etl')
+    WITH (MAX_MEMORY=4MB, MAX_EVENT_SIZE=4MB);
+GO

@@ -1,3 +1,4 @@
+-- select all available extended events, actions, and targets
 SELECT
     obj.object_type,
     pkg.name AS [package_name],
@@ -13,14 +14,8 @@ ORDER BY
     pkg.name,
     obj.name;
 
+-- Create events session but 1st check if one exists
 IF EXISTS (SELECT * FROM sys.server_event_sessions WHERE name='test_session')
-    DROP EVENT session test_session ON SERVER;
+    DROP EVENT SESSION test_session ON SERVER;
 GO
 
-CREATE EVENT SESSION test_session
-ON SERVER
-    ADD EVENT sqlos.async_io_requested,
-    ADD EVENT sqlserver.lock_acquired
-    ADD TARGET package0.etw_classic_sync_target (SET default_etw_session_logfile_path = N'C:\demo\traces\sqletw.etl' )
-    WITH (MAX_MEMORY=4MB, MAX_EVENT_SIZE=4MB);
-GO

@@ -6,4 +6,4 @@ SELECT
     reason_desc
 FROM sys.database_automatic_tuning_options
     
-    
+ALTER DATABASE [WideWorldImportersDW] SET COMPATIBILITY_LEVEL = 150;

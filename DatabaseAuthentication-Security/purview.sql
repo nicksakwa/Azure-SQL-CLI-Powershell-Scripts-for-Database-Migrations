@@ -4,3 +4,4 @@ EXEC sp_addrolemember 'db_owner', '<purview-account>'; GO
 
 CREATE MASTER KEY 
 GO
+

@@ -6,3 +6,4 @@ SELECT sp.stats_id,
 FROM sys.stats
     CROSS APPLY sys.dm_db_stats_properties(object_id, stats_id) AS sp
 WHERE user_created = 1
+

@@ -1,0 +1,1 @@
+EXEC sp_query_force_plan @query_id=73, @plan_id=79

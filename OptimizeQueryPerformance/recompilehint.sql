@@ -4,3 +4,8 @@ DECLARE  @Recompile BIT = 0
          , @SQLString NVARCHAR(500)
 
 SELECT @SQLString = N'SELECT SalesOrderId, OrderDate FROM Sales.SalesOrderHeader WHERE SalesPersonID
+
+IF @SalesPersonID IS NULL
+BEGIN
+     SET @Recompile = 1
+END

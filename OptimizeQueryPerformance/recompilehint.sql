@@ -9,3 +9,8 @@ IF @SalesPersonID IS NULL
 BEGIN
      SET @Recompile = 1
 END
+
+IF @Recompile = 1
+BEGIN
+    SET @SQLString = @SQLString + N' OPTION(RECOMPILE)'
+END

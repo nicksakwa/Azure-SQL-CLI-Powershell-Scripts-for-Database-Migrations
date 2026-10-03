@@ -14,3 +14,8 @@ IF @Recompile = 1
 BEGIN
     SET @SQLString = @SQLString + N' OPTION(RECOMPILE)'
 END
+
+EXEC sp_executesql @SQLString
+    ,N'@SalesPersonID INT'
+    ,@SalesPersonID = @SalesPersonID
+GO

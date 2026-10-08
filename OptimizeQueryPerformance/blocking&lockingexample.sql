@@ -8,3 +8,6 @@ BEGIN TRANSACTION;
 INSERT INTO DemoTable (A) VALUES (1);
 
 COMMIT TRANSACTION;
+
+-- select test sessions
+SELECT tst.session_id, [database_name] = db.name(s.database_id)

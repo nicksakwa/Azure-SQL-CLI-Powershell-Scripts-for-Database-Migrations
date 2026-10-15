@@ -15,3 +15,4 @@ SELECT tst.session_id, [database_name] = db.name(s.database_id)
     , transaction_duration_s = datediff(s, tat.transaction_begin_time, sysdatetime()) 
     , transaction_type = CASE tat.transaction_type  WHEN 1 THEN 'Read/write transaction'
         WHEN 2 THEN 'Read-only transaction'
+        WHEN 3 THEN 'System transaction'

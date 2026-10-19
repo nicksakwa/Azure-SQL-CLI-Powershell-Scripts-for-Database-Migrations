@@ -17,3 +17,5 @@ SELECT tst.session_id, [database_name] = db.name(s.database_id)
         WHEN 2 THEN 'Read-only transaction'
         WHEN 3 THEN 'System transaction'
         WHEN 4 THEN 'Distributed transaction' END
+    , input_buffer = ib.event_info, tat.transaction_uow
+    

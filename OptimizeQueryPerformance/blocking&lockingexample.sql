@@ -19,4 +19,5 @@ SELECT tst.session_id, [database_name] = db.name(s.database_id)
         WHEN 4 THEN 'Distributed transaction' END
     , input_buffer = ib.event_info, tat.transaction_uow
     , transaction_state  = CASE tat.transaction_state
-        WHEN 0 THEN 'The transaction has not been completely initialized yet.'    
+        WHEN 0 THEN 'The transaction has not been completely initialized yet.'
+        WHEN 1 THEN 'The transaction has been initialized but has not started.'    

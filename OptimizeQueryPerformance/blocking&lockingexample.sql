@@ -21,4 +21,5 @@ SELECT tst.session_id, [database_name] = db.name(s.database_id)
     , transaction_state  = CASE tat.transaction_state
         WHEN 0 THEN 'The transaction has not been completely initialized yet.'
         WHEN 1 THEN 'The transaction has been initialized but has not started.'
-        WHEN 2 THEN 'The transaction is active - has not been committed or rolled back.'    
+        WHEN 2 THEN 'The transaction is active - has not been committed or rolled back.'
+        WHEN 3 THEN 'The transaction had ended. This is used for read only transactions.'    

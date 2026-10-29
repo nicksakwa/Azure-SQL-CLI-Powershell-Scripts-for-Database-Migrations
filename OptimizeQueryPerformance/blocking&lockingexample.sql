@@ -25,3 +25,4 @@ SELECT tst.session_id, [database_name] = db.name(s.database_id)
         WHEN 3 THEN 'The transaction had ended. This is used for read only transactions.'
         WHEN 4 THEN 'The commit process has been initiated for the transaction '    
         WHEN 5 THEN 'The transaction is in a prepared state and waiting resolution.'
+        WHEN 6 THEN 'The transaction has been committed.'

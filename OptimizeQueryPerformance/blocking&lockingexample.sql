@@ -27,3 +27,4 @@ SELECT tst.session_id, [database_name] = db.name(s.database_id)
         WHEN 5 THEN 'The transaction is in a prepared state and waiting resolution.'
         WHEN 6 THEN 'The transaction has been committed.'
         WHEN 7 THEN 'The transaction is rolled back.'
+        WHEN 8 THEN 'The transaction has been rolled back.' END

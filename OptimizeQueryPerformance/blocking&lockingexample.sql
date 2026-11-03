@@ -28,3 +28,7 @@ SELECT tst.session_id, [database_name] = db.name(s.database_id)
         WHEN 6 THEN 'The transaction has been committed.'
         WHEN 7 THEN 'The transaction is rolled back.'
         WHEN 8 THEN 'The transaction has been rolled back.' END
+    , transaction_name = tat.name, request_status = r.status
+    , tst.is_user_transaction, tst.is_local
+    , session_open_transaction_count = tst.open_transaction_count
+    , s.host_name, s.program_name, s.client_interface_name, s.login_name, s.is_user_process

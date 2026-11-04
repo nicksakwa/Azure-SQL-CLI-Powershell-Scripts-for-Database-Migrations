@@ -32,3 +32,4 @@ SELECT tst.session_id, [database_name] = db.name(s.database_id)
     , tst.is_user_transaction, tst.is_local
     , session_open_transaction_count = tst.open_transaction_count
     , s.host_name, s.program_name, s.client_interface_name, s.login_name, s.is_user_process
+FROM sys.dm_tran_active_transactions tat

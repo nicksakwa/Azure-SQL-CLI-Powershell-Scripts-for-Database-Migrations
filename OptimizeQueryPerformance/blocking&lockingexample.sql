@@ -34,4 +34,5 @@ SELECT tst.session_id, [database_name] = db.name(s.database_id)
     , s.host_name, s.program_name, s.client_interface_name, s.login_name, s.is_user_process
 FROM sys.dm_tran_active_transactions tat
 INNER JOIN sys.dm_tran_session_transactions tst on tat.transaction_id = tst.transaction_id,
-INNER JOIN sys.dm_exec_sessions s on s.session_id = tst.session_id
+INNER JOIN sys.dm_exec_sessions s on s.session_id = tst.session_id  
+LEFT OUTER JOIN sys.dm_exec_requests r on r.session_id = s.session_id

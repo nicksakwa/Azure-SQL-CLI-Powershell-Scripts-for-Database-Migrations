@@ -36,3 +36,4 @@ FROM sys.dm_tran_active_transactions tat
 INNER JOIN sys.dm_tran_session_transactions tst on tat.transaction_id = tst.transaction_id,
 INNER JOIN sys.dm_exec_sessions s on s.session_id = tst.session_id  
 LEFT OUTER JOIN sys.dm_exec_requests r on r.session_id = s.session_id
+CROSS APPLY sys.dm_exec_input_buffer(s.session_id, null) AS ib

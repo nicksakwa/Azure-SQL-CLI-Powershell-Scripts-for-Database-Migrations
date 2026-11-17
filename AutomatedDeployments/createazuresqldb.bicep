@@ -1,0 +1,1 @@
+@description('The name of the SQL logical server.')

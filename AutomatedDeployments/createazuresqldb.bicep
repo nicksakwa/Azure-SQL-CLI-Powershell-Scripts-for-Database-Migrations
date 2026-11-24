@@ -5,3 +5,4 @@ param serverName string = uniqueString('sql', resourceGroup().id)
 param sqlDBName string = 'SampleDB'
 
 @description('Location for all resources.')
+param location string = resourceGroup().location

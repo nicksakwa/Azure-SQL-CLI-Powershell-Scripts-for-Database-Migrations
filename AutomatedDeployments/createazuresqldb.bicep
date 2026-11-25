@@ -6,3 +6,5 @@ param sqlDBName string = 'SampleDB'
 
 @description('Location for all resources.')
 param location string = resourceGroup().location
+
+@description('The admin username of the SQL logicalserver.')

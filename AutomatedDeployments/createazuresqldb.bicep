@@ -8,3 +8,4 @@ param sqlDBName string = 'SampleDB'
 param location string = resourceGroup().location
 
 @description('The admin username of the SQL logicalserver.')
+param administratorLogin string
